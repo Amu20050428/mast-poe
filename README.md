@@ -42,3 +42,101 @@ function App() {
 
 export default App;
 this is the example off the changes that were implemented
+followed by the home screen
+import React from 'react';
+import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Button } from 'react-native';
+import Navigation from './navigation';
+
+const HomeScreen = ({ navigation }) =>{
+  return (
+    <ImageBackground source={require('../assets/home_background.jpg')} style={styles.background}>
+      <View style={styles.overlay}>
+        {/* Welcome and subtitle */}
+        <Text style={styles.welcomeText}>Welcome to Christopher's Restaurant</Text>
+        <Text style={styles.subText}>YOUR TASTE YOUR WORLD</Text>
+
+        {/* Buttons to explore and exit */}
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
+          <Text style={styles.buttonText}>EXPLORE RESTAURANT</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => console.log('Exit App')}>
+          <Text style={styles.buttonText}>EXIT APP</Text>
+        </TouchableOpacity>
+
+        {/* Navigation buttons to each course */}
+        <View style={styles.navButtons}>
+          <Button
+            title="Go to Drinks"
+            onPress={() => navigation.navigate('Drinks')}
+            color="#333"
+          />
+          <Button
+            title="Go to Starters"
+            onPress={() => navigation.navigate('Starters')}
+            color="#333"
+          />
+          <Button
+            title="Go to Main"
+            onPress={() => navigation.navigate('Main')}
+            color="#333"
+          />
+          <Button
+            title="Go to Desserts"
+            onPress={() => navigation.navigate('Desserts')}
+            color="#333"
+          />
+        </View>
+      </View>
+    </ImageBackground>
+  );
+};
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 20,
+    borderRadius: 10,
+    width: '90%',
+  },
+  welcomeText: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  subText: {
+    color: '#fff',
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#333',
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  navButtons: {
+    marginTop: 20,
+    width: '100%',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+});
+
+export default HomeScreen;
+
